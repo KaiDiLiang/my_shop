@@ -44,12 +44,13 @@ class Image {
             $text = substr($chars, $i, 1);
             imagettftext($image, $size, $angle, $x, $y, $color, $fontfile, $text);
         }
-        
         // 告诉浏览器需要显示的资源类型
-        header('Content-Type:image/png');
-        header('charset=UTF-8');
+        header("Content-Type:image/gif");
+        ob_start();
         // 调用并在使用后销毁
-        imagepng($image);
+        imagegif($image);
+        $content = ob_get_clean();
         imagedestroy($image);
+        return response($content, 200, ['Content-Length' => strlen($content)])->contentType('image/png');
     }
 }
