@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>adminLogin</title>
+    <style>
+            html,h1,div,ul,ol,li {
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+                width: 100%;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                list-style: none;
+            }
+            #form_data {
+                margin-top: 20px;
+                width: 100%;
+                line-height: 2.5rem;
+            }
+            .data_span {
+                display: inline-block;
+                width: 10%;
+            }
+        </style>
+</head>
+
+<body>
+    <h1>myshop后台登陆</h1>
+    <div id="form_data">
+        <!-- <form name="login_data" method="POST" action="../../controller/Login.php" autocomplete="on" accept-charset="utf-8"> -->
+            <form action='login' method="post">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <label><span class="data_span">用户名:</span></label>
+                                <input type="text" name="u_name" autocomplete="on" placeholder="填写您的用户名" required>
+                            </li>
+                            <li>
+                                <label><span class="data_span">密码:</span></label>
+                                <input type="password" name="u_pwd" placeholder="输入您的登录密码" required>
+                            </li>
+                            <li>
+                                <label><span class="data_span">邮箱:</span></label>
+                                <input type="email" name="u_email" autocomplete="on" placeholder="填写邮箱">
+                            </li>
+                            <li>
+                                <label><span class="data_span">验证码:</span></label>
+                                <input type="text" name="verify" placeholder="输入下方的验证码" required>
+                                <img src="verify_image" id="verify_img" onclick="newVerify()">
+                            </li>
+                            <li>
+                                <label><span class="data_span"></span></label>
+                                <input type="checkbox" name="remember" value="yes">7天内自动登录
+                            </li>
+                            <li>
+                                <label> </label>
+                                <input type="submit" name="login" value="登录">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+            
+    </div>
+</body>
+<script>
+    function newVerify() {
+        document.getElementById('verify_img').src='verify_image?=rnd' + Math.random();
+    }
+</script>
+</html>
